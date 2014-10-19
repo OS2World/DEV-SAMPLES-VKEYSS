@@ -1,0 +1,5 @@
+Contains a wrapper non-visual part for
+IVKeySortedSet part. The instructions in
+the readme file can also be used for
+implementing a wrapper non-visual part
+for other collections in the VBCC.VBB.

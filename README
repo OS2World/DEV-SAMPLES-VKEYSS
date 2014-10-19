@@ -1,0 +1,55 @@
+NAME: VKEYSS.ZIP (IVKeySortedSet )
+
+COPYRIGHT:
+----------
+Copyright (C) International Business Machines Corp., 1991,1995.
+
+DISCLAIMER OF WARRANTIES:
+-------------------------
+The following [enclosed] code is sample code created by IBM
+Corporation.  This sample code is not part of any standard IBM product
+and is provided to you solely for the purpose of assisting you in the
+development of your applications.  The code is provided "AS IS",
+without warranty of any kind.  IBM shall not be liable for any damages
+arising out of your use of the sample code, even if they have been
+advised of the possibility of such damages.
+
+
+DESCRIPTION:
+
+The sample contains a wrapper non-visual part for IVKeySortedSet.  You may
+ask why you have to do this, this is because Visual Builder does not generate
+codes correctly for the template class that has more than one pamaraters with
+the current release of VAC++ V3.0.  IVkeySortedSet is a template class and
+it requires 2 parameters.
+
+
+How to build the wrapper part:
+
+ - create an VBE file for the wrapper part which inherits from IVKeySortedSet
+   and then import it in VB, see the included vbe file IMYKYSRT.VBE.
+
+ Note: You don't need to rebuild this part if you plan to use the
+       IVKeySortedSet collection, just load up mycc.vbb.
+
+How to use this wrapper part in a VB part:
+
+ - Load up VBCC.VBB and then MYCC.VBB in the VB main dialog box.
+ - Add/Drop IMyKeySortedSet part onto the f/f surface.  For more details,
+   refer to test.vbb
+ - Edit the global key acess function in keyacc.cpp to work with your
+   collection.  For example, the sample contains the collection of pointers
+   to APerson objects, the Name attribute of APerson is the key whose type
+   is IString.
+ - Include keyacc.hpp in the part where the collection is used. In the
+   sample, the collection is used in the APerson part.  For more details
+   on the implementation of IVKeySortedSet, refer to the Open Class User's
+   Guide and Open Class online reference.
+
+ Note: before using the IMyKeySortedSet part, it is required to load up
+       VBCC.VBB first.  This VBB contains the definitions for IVKeySortedSet.
+
+
+This sample was created by Brian Luc, bluc@vnet.ibm.com
+Feb 23, 1996.
+

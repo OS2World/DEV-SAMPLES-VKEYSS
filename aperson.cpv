@@ -1,0 +1,70 @@
+
+
+// Feature source code generation begins here...
+INotificationId APerson::NameId = "APerson::name";
+INotificationId APerson::AgeId = "APerson::age";
+INotificationId APerson::SexId = "APerson::sex";
+
+
+APerson& APerson::setName(const IString& aName)
+{
+  if (!(iName == aName))
+  {
+    iName = aName;
+    notifyObservers(INotificationEvent(APerson::NameId, *this));
+  } // endif
+  return *this;
+}
+
+IString APerson::Age() const
+{
+  return iAge;
+}
+
+APerson& APerson::setAge(const IString& aAge)
+{
+  if (!(iAge == aAge))
+  {
+    iAge = aAge;
+    notifyObservers(INotificationEvent(APerson::AgeId, *this));
+  } // endif
+  return *this;
+}
+
+IString APerson::Sex() const
+{
+  return iSex;
+}
+
+APerson& APerson::setSex(const IString& aSex)
+{
+  if (!(iSex == aSex))
+  {
+    iSex = aSex;
+    notifyObservers(INotificationEvent(APerson::SexId, *this));
+  } // endif
+  return *this;
+}
+
+// Feature source code generation ends here.
+
+
+IString APerson::asString() const
+{
+  return IString(Name()) + "." + IString(Sex()) + "." + IString(Age());
+}
+
+
+// Feature source code generation begins here...
+
+const IString& APerson::Name() const
+{
+  return iName;
+}
+
+// Feature source code generation ends here.
+
+APerson::APerson(IString name, IString age, IString sex):
+        iName(name),iAge(age),iSex(sex)
+  {}
+

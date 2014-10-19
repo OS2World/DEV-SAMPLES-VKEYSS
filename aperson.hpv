@@ -1,0 +1,36 @@
+
+
+// Feature source code generation begins here...
+public:
+//  virtual IString & Name() const;
+  APerson(IString name, IString sex, IString age);
+
+
+
+  virtual APerson& setName(const IString& aName);
+  virtual IString Age() const;
+  virtual APerson& setAge(const IString& aAge);
+  virtual IString Sex() const;
+  virtual APerson& setSex(const IString& aSex);
+
+  static INotificationId NameId;
+  static INotificationId AgeId;
+  static INotificationId SexId;
+
+private:
+  IString iName;
+  IString iAge;
+  IString iSex;
+// Feature source code generation ends here.
+
+public:
+  virtual IString asString() const;
+
+
+// Feature source code generation begins here...
+public:
+  virtual const IString& Name() const;
+
+
+// Feature source code generation ends here.
+

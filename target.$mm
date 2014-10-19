@@ -1,0 +1,83 @@
+:TARGET.SUFFIXES
+:DEPENDENCY..cpp .obj .rc .rcx .res 
+:TARGET.all
+:DEPENDENCY.
+.\target.exe
+:RULE..cpp.obj
+:ACTION.Compile::C++ Compiler
+:COMMAND.
+icc.exe -DIC_TRACE_DEVELOP /Ti /Gm /Gd /C %s
+:RULE..rcx.rc
+:ACTION.Compile::Resource Precompile
+:COMMAND.
+icc.exe -c /Pc+ /Pe+ /Pd /I. %s > %|dpfF.rc
+:RULE..rc.res
+:ACTION.Compile::Resource Compiler
+:COMMAND.
+rc.exe -r %s .\%|fF.RES
+:TARGET..\target.exe
+:DEPENDENCY.
+.\test.obj
+.\vbmain.obj
+.\APerson.obj
+.\keyacc.obj
+.\test.res
+:ACTION.Link::Linker
+:COMMAND.
+icc.exe @<<
+-DIC_TRACE_DEVELOP 
+ /Tdp 
+ /Gm /Gd 
+ /B" /de /pmtype:pm"
+ /Fetarget.exe 
+ .\test.obj
+ .\vbmain.obj
+ .\APerson.obj
+ .\keyacc.obj
+<<
+:ACTION.Bind::Resource Bind
+:COMMAND.
+rc.exe .\test.res target.exe
+:TARGET..\test.obj
+:DEPENDENCY.
+f:\samples\vkeysrt\test.cpp
+{f:\samples\vkeysrt;$(INCLUDE);}test.hpp
+{f:\samples\vkeysrt;$(INCLUDE);}APerson.hpp
+{f:\samples\vkeysrt;$(INCLUDE);}imykysrt.h
+{f:\samples\vkeysrt;$(INCLUDE);}test.h
+{f:\samples\vkeysrt;$(INCLUDE);}keyacc.hpp
+{f:\samples\vkeysrt;$(INCLUDE);}APerson.h
+{f:\samples\vkeysrt;$(INCLUDE);}aperson.hpv
+:TARGET..\keyacc.obj
+:DEPENDENCY.
+f:\samples\vkeysrt\keyacc.cpp
+{f:\samples\vkeysrt;$(INCLUDE);}APerson.hpp
+{f:\samples\vkeysrt;$(INCLUDE);}keyacc.hpp
+{f:\samples\vkeysrt;$(INCLUDE);}APerson.h
+{f:\samples\vkeysrt;$(INCLUDE);}aperson.hpv
+:TARGET..\APerson.obj
+:DEPENDENCY.
+f:\samples\vkeysrt\APerson.cpp
+{f:\samples\vkeysrt;$(INCLUDE);}APerson.hpp
+{f:\samples\vkeysrt;$(INCLUDE);}keyacc.hpp
+{f:\samples\vkeysrt;$(INCLUDE);}APerson.h
+{f:\samples\vkeysrt;$(INCLUDE);}aperson.hpv
+{f:\samples\vkeysrt;$(INCLUDE);}aperson.cpv
+:TARGET..\vbmain.obj
+:DEPENDENCY.
+f:\samples\vkeysrt\vbmain.cpp
+{f:\samples\vkeysrt;$(INCLUDE);}test.hpp
+{f:\samples\vkeysrt;$(INCLUDE);}APerson.hpp
+{f:\samples\vkeysrt;$(INCLUDE);}imykysrt.h
+{f:\samples\vkeysrt;$(INCLUDE);}test.h
+{f:\samples\vkeysrt;$(INCLUDE);}keyacc.hpp
+{f:\samples\vkeysrt;$(INCLUDE);}APerson.h
+{f:\samples\vkeysrt;$(INCLUDE);}aperson.hpv
+:TARGET..\test.rc
+:DEPENDENCY.
+f:\samples\vkeysrt\test.rcx
+{$(INCLUDE)}test.rci
+{$(INCLUDE)}test.h
+:TARGET..\test.res
+:DEPENDENCY.
+.\test.rc

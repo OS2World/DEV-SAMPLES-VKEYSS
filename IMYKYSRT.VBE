@@ -1,0 +1,8 @@
+//VBBeginPartInfo: IMyKeySortedSet,"IBM KeySortedSet template collection class"
+//VBParent: IVKeySortedSet
+//VBIncludes: "imykysrt.h" _IMYKYSRT_,<ivksset.h> _IVKSSET_
+//VBPartDataFile: mycc.vbb
+//VBComposerInfo: nonvisual,16007,dde4vr30
+//VBSettingsPages: AvlCollectionAttributesPage
+//VBGeneratorClass: AvlCollectionCodeGenerator
+//VBEndPartInfo: IMyKeySortedSet
